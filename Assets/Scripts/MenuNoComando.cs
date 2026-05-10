@@ -30,6 +30,6 @@ public class MenuNoComando : MonoBehaviour
     public void FinalizarSimulacao()
     {
         // Carrega a scene de resultados (certifica-te que o nome está igual ao que criaste)
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Resultados");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }
