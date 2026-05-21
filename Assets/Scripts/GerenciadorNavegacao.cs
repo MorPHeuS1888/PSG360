@@ -12,7 +12,8 @@ public class GerenciadorNavegacao : MonoBehaviour
     // Na Seleção de Níveis, o botão AVF Care chama esta:
     public void AbrirModuloAVF()
     {
-        SceneManager.LoadScene("Quarto");
+        GameData.SelectRoom(); // Seleciona aleatoriamente um quarto
+        SceneManager.LoadScene($"Quarto{GameData.SelectedRoom}");
     }
 
     // Para o botão LEAVE
