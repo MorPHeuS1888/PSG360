@@ -547,8 +547,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8450990683315565424}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.003972707, y: -0.013929893, z: -0.018370474, w: 0.9997263}
-  m_LocalPosition: {x: 0.0022988992, y: -0.0035365503, z: 0.0021864034}
+  m_LocalRotation: {x: -0.003972707, y: -0.013929983, z: -0.018370392, w: 0.9997263}
+  m_LocalPosition: {x: 0.0022991004, y: -0.0035361107, z: 0.0021865338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1514,7 +1514,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.13
+  m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &969430137900161528
 AudioSource:
@@ -1540,7 +1540,7 @@ AudioSource:
   MinDistance: 0
   MaxDistance: 0.1
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
