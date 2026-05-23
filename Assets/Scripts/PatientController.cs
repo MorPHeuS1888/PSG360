@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +6,10 @@ public class PatientController : MonoBehaviour
     public GameObject PatientNeck;
     public GameObject PatientLashesL;
     public GameObject PatientLashesR;
+    public GameObject PatientLeftHand;
+    public GameObject LeftArmWithAudio;
+    public GameObject LeftArmWithRenderer;
+    public GameObject Bump;
 
     private float headUpdateInterval = 1f;
     private float rotationSpeedDegPerSec = 8f;
@@ -16,6 +19,10 @@ public class PatientController : MonoBehaviour
     private float lashTargetAngle = -50f;
     private float lashCurrentAngle = -50f;
     private float rotationSpeedLashes = 300f;
+    private bool isShowBump = false;
+    private Vector3 leftHandRestPosition;
+    private AudioSource leftArmAudioSource;
+    private SkinnedMeshRenderer leftArmRenderer;
 
     private enum BlinkState { Open, Closing, Opening }
     private BlinkState blinkState = BlinkState.Open;
@@ -24,6 +31,10 @@ public class PatientController : MonoBehaviour
     void Start()
     {
         GameData.PatientController = this;
+        leftArmAudioSource = LeftArmWithAudio.GetComponent<AudioSource>();
+        leftArmRenderer = LeftArmWithRenderer.GetComponent<SkinnedMeshRenderer>();
+        leftHandRestPosition = PatientLeftHand.transform.position;
+
         StartCoroutine(Blink());
         StartCoroutine(MoveHead());
     }
@@ -31,12 +42,12 @@ public class PatientController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameData.PlayerCamera == null || PatientNeck == null)
-            return;
-                
+        CheckHandHeight();
         RotateHead();
         HandleBlinking();        
     }
+
+    #region patient head management
 
     private IEnumerator Blink()
     {
@@ -105,4 +116,79 @@ public class PatientController : MonoBehaviour
         float curvedT = 1f - Mathf.Pow(1f - t, 2f);
         return curvedT * maxAngle * sign;
     }
+
+    #endregion
+
+    #region audio management
+
+    public void SetAudioClip()
+    {
+        // loading audio clip based on selected audio in GameData using 2 digit formatting for the number (e.g., AVF01, AVF02, etc.)
+        string audioClipName = $"AVF{GameData.SelectedAudio:D2}";
+        AudioClip clip = Resources.Load<AudioClip>($"Audio/{audioClipName}");
+        Debug.Log($"Setting audio clip: {audioClipName}");
+        leftArmAudioSource.clip = clip;
+    }
+
+    public void StopAudio()
+    {
+        leftArmAudioSource.Stop();
+    }
+
+    public void PlayAudio()
+    {
+        leftArmAudioSource.Play();
+    }
+
+    #endregion
+
+    #region skin management
+
+    public void SetSkin()
+    {
+        string skinName = $"bodyskin{GameData.SelectedSkin:D2}";
+        Material skin = Resources.Load<Material>($"Skins/{skinName}");
+        Debug.Log($"Setting skin: {skinName}");
+
+        var mats = leftArmRenderer.materials;
+        mats[0] = skin;
+        leftArmRenderer.materials = mats;
+    }
+
+    public void SetBump()
+    {
+        if (GameData.SelectedBump == 1)
+        {
+            isShowBump = false;
+        }
+        else
+        {
+            isShowBump = true;
+        }
+    }
+
+    private void CheckHandHeight()
+    {
+        float handHeight = PatientLeftHand.transform.position.y;
+        float heightDifference = handHeight - leftHandRestPosition.y;
+        if (isShowBump && heightDifference > 0.1f)
+        {            
+            if (!Bump.activeSelf)
+            {
+                Debug.Log($"Hand height: {heightDifference}, showing bump");
+                Bump.SetActive(true);
+            }
+        }
+        else
+        {            
+            if (Bump.activeSelf)
+            {
+                Debug.Log($"Hand height: {heightDifference}, hiding bump");
+                Bump.SetActive(false);
+            }
+                
+        }
+    }
+
+    #endregion
 }
