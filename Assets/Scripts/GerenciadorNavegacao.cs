@@ -3,10 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class GerenciadorNavegacao : MonoBehaviour
 {
+
+    public GameObject painelDeSelecaoDeNiveis;
+    public GameObject MenuInicial;
+
     // No Menu Inicial, o botão PLAY chama esta:
     public void AbrirSelecaoDeNiveis()
     {
-        SceneManager.LoadScene("Selecaodeniveis");
+        painelDeSelecaoDeNiveis.SetActive(true);
+        MenuInicial.SetActive(false);
+    }
+
+    public void VoltarMenuInicial() 
+    {
+        painelDeSelecaoDeNiveis.SetActive(false);
+        MenuInicial.SetActive(true);
     }
 
     // Na Seleção de Níveis, o botão AVF Care chama esta:
@@ -16,16 +27,12 @@ public class GerenciadorNavegacao : MonoBehaviour
         SceneManager.LoadScene($"Quarto{GameData.SelectedRoom}");
     }
 
-    // Para o botão LEAVE
-    public void SairDoJogo()
+    public void QuitGame()
     {
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
         Application.Quit();
-        Debug.Log("O jogo fechou.");
-    }
-
-    // Para o botão Back, em qualquer cena, chama esta função:
-    public void VoltarMenuInicial()
-    {
-        SceneManager.LoadScene("MainMenu");
+    #endif
     }
 }

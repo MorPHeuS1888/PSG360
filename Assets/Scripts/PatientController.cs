@@ -177,6 +177,7 @@ public class PatientController : MonoBehaviour
             {
                 Debug.Log($"Hand height: {heightDifference}, showing bump");
                 Bump.SetActive(true);
+                GameData.GamePoints["CheckElevation"] = GameData.ActionPoints;
             }
         }
         else

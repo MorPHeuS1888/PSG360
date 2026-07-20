@@ -4,13 +4,12 @@ using UnityEngine.InputSystem;
 public class ControllerToolSwitcher : MonoBehaviour
 {
     [Header("Objects")]
-    public GameObject stethoscope;
-    public GameObject universalController;
+    public GameObject[] controllerObjects;
 
     [Header("Input")]
     public InputActionReference toggleAction;
 
-    private bool usingStethoscope = false;
+    private int selectedTool = 0;
 
     private void OnEnable()
     {
@@ -31,13 +30,19 @@ public class ControllerToolSwitcher : MonoBehaviour
 
     private void OnTogglePressed(InputAction.CallbackContext ctx)
     {
-        usingStethoscope = !usingStethoscope;
+        selectedTool++;
+        if (selectedTool >= controllerObjects.Length)
+            selectedTool = 0;
         UpdateVisuals();
     }
 
     private void UpdateVisuals()
     {
-        stethoscope.SetActive(usingStethoscope);
-        universalController.SetActive(!usingStethoscope);
+        foreach (GameObject obj in controllerObjects)
+        {
+            obj.SetActive(false);
+        }
+
+        controllerObjects[selectedTool].SetActive(true);        
     }
 }
