@@ -4149,7 +4149,7 @@ MonoBehaviour:
   - {fileID: 417196343}
   - {fileID: 935868107}
   - {fileID: 1964576177}
-  toggleAction: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  toggleAction: {fileID: -7284085897543556228, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1001 &1446138060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4169,6 +4169,10 @@ PrefabInstance:
     - target: {fileID: 4379956422223868240, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470598868349477085, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
+      propertyPath: m_MoveSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5364222924565335920, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4226,12 +4230,19 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 8561192241403447198, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
+      propertyPath: 'm_ProvidersToDisable.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 9090255378389439579, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7030429571971932565, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
+    - {fileID: 2380324993591747089, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
+    - {fileID: 6711351747053792280, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8326749196237832908, guid: b7e0ba4b5964a224a98e440814a5e1f1, type: 3}
       insertIndex: -1
@@ -4508,7 +4519,7 @@ MonoBehaviour:
   - {fileID: 576798869}
   - {fileID: 167494094}
   - {fileID: 760358927}
-  toggleAction: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  toggleAction: {fileID: 1927100752533235325, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &1669411872
 GameObject:
   m_ObjectHideFlags: 0
