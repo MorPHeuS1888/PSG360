@@ -11,6 +11,7 @@ public class GerenciadorBriefing : MonoBehaviour
         GameData.SelectSkin();   // Seleciona uma skin aleatória
         GameData.SelectBump();   // Seleciona um bump aleatório
         GameData.SelectAVFPulse(); // Seleciona um pulso AVF aleatório
+        GameData.SelectTemperature(); // Seleciona uma temperatura aleatória
         GameData.InitializeGamePoints(); // Inicializa os pontos do jogo
         painelBriefing.SetActive(false);   // Esconde o painel
         painelLeftBriefing.SetActive(false); // Esconde o painel esquerdo

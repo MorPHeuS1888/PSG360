@@ -8,6 +8,7 @@ public static class GameData
     public static int SelectedSkin { get; set; } = 1;
     public static int SelectedBump { get; set; } = 1;
     public static int SelectedAVFPulse { get; set; } = 1;
+    public static float SelectedTemperature { get; set; } = 37.0f;
 
     public static PatientController PatientController { get; set; }
     public static PlayerController PlayerController { get; set; }
@@ -69,5 +70,11 @@ public static class GameData
     {
         // select a random number between 1 and NumberOfAVFPulse, inclusive
         SelectedAVFPulse = 1; //Random.Range(1, NumberOfAVFPulse + 1);
+    }
+
+    public static void SelectTemperature()
+    {
+        // select a random number between 36.5 and 41.0, inclusive
+        SelectedTemperature = Random.Range(36.5f, 41.0f);
     }
 }
