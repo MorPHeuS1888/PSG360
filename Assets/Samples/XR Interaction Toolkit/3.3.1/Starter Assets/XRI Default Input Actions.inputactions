@@ -985,6 +985,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Finalize",
+                    "type": "Button",
+                    "id": "681fb18f-42a0-4358-8967-806a0e24efca",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1304,6 +1313,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Switch Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a387ba9e-1b28-4fea-ba93-2f3b0b5db54f",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Finalize",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

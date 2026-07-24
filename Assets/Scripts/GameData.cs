@@ -62,14 +62,14 @@ public static class GameData
     public static void SelectBump()
     {
         // select a random number between 1 and NumberOfBumps, inclusive
-        SelectedBump = 2; // Random.Range(1, NumberOfBumps + 1);
+        SelectedBump = Random.Range(1, NumberOfBumps + 1);
         PatientController.SetBump();
     }
 
     public static void SelectAVFPulse()
     {
         // select a random number between 1 and NumberOfAVFPulse, inclusive
-        SelectedAVFPulse = 1; //Random.Range(1, NumberOfAVFPulse + 1);
+        SelectedAVFPulse = Random.Range(1, NumberOfAVFPulse + 1);
     }
 
     public static void SelectTemperature()

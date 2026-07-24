@@ -400,7 +400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Patients Body Temperature  37.8 \xBAC "
+  m_text: "Patient Body Temperature\n37.8 \xBAC "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2593,6 +2593,11 @@ Transform:
 --- !u!1 &760358927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 255281722028212714, guid: 7c4dc7b329a21d643b121ddb70fe1df4, type: 3}
+  m_PrefabInstance: {fileID: 760358925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &760358928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6102170812086700959, guid: 7c4dc7b329a21d643b121ddb70fe1df4, type: 3}
   m_PrefabInstance: {fileID: 760358925}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &823231922 stripped
@@ -4975,7 +4980,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuNoComando
   painelDoMenu: {fileID: 1723900910}
-  botaoDeMenu: {fileID: -8069514856583376848, guid: 0be0028c24f2a4c14a96b6aa39055933, type: 3}
+  botaoDeMenu: {fileID: 3558772465205144011, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  checklist: {fileID: 760358928}
 --- !u!1 &1824717845
 GameObject:
   m_ObjectHideFlags: 0
@@ -6250,7 +6256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd354a0809a3dc84a921b8cb4e17e936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  TemperatureCanvas: {fileID: 0}
+  TemperatureCanvas: {fileID: 563130518}
+  TemperatureText: {fileID: 183020499}
 --- !u!1 &2061830442
 GameObject:
   m_ObjectHideFlags: 0
