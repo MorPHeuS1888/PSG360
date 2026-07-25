@@ -19,7 +19,6 @@ public class PatientController : MonoBehaviour
     private float lashTargetAngle = -50f;
     private float lashCurrentAngle = -50f;
     private float rotationSpeedLashes = 300f;
-    private bool isShowBump = false;
     private Vector3 leftHandRestPosition;
     private AudioSource leftArmAudioSource;
     private SkinnedMeshRenderer leftArmRenderer;
@@ -155,39 +154,23 @@ public class PatientController : MonoBehaviour
         leftArmRenderer.materials = mats;
     }
 
-    public void SetBump()
-    {
-        if (GameData.SelectedBump == 1)
-        {
-            isShowBump = false;
-        }
-        else
-        {
-            isShowBump = true;
-        }
-    }
-
     private void CheckHandHeight()
     {
         float handHeight = PatientLeftHand.transform.position.y;
         float heightDifference = handHeight - leftHandRestPosition.y;
-        if (isShowBump && heightDifference > 0.1f)
-        {            
-            if (!Bump.activeSelf)
-            {
-                Debug.Log($"Hand height: {heightDifference}, showing bump");
+        if (heightDifference > 0.1f)
+        {
+            Debug.Log($"Hand height: {heightDifference}");
+            GameData.GamePoints["CheckElevation"] = GameData.ActionPoints;
+
+            if (GameData.SelectedBump == 1)
+                Bump.SetActive(false);
+            else
                 Bump.SetActive(true);
-                GameData.GamePoints["CheckElevation"] = GameData.ActionPoints;
-            }
         }
         else
         {            
-            if (Bump.activeSelf)
-            {
-                Debug.Log($"Hand height: {heightDifference}, hiding bump");
-                Bump.SetActive(false);
-            }
-                
+            Bump.SetActive(true); 
         }
     }
 

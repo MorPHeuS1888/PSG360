@@ -43,6 +43,10 @@ public class ControllerToolSwitcher : MonoBehaviour
             obj.SetActive(false);
         }
 
-        controllerObjects[selectedTool].SetActive(true);        
+        controllerObjects[selectedTool].SetActive(true);
+        if (controllerObjects[selectedTool].name == "BriefingTablet")
+        {
+            GameData.GamePoints["CheckTablet"] = GameData.ActionPoints;
+        }
     }
 }

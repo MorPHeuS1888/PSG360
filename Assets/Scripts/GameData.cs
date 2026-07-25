@@ -23,8 +23,17 @@ public static class GameData
     public static Dictionary<string, int>  GamePoints = new Dictionary<string, int>();
     public static int ActionPoints = 5;
 
+    public static Dictionary<int, bool> Checklist = new Dictionary<int, bool>();
+
     public static void InitializeGamePoints()
     {
+        Checklist.Clear();
+        Checklist.Add(1, false);
+        Checklist.Add(2, false);
+        Checklist.Add(3, false);
+        Checklist.Add(4, false);
+        Checklist.Add(5, false);
+        Checklist.Add(6, false);
         GamePoints.Clear();
         GamePoints.Add("CheckTemp", 0);
         GamePoints.Add("CheckPulse", 0);
@@ -63,7 +72,6 @@ public static class GameData
     {
         // select a random number between 1 and NumberOfBumps, inclusive
         SelectedBump = Random.Range(1, NumberOfBumps + 1);
-        PatientController.SetBump();
     }
 
     public static void SelectAVFPulse()

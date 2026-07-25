@@ -7,7 +7,6 @@ public class MenuNoComando : MonoBehaviour
     [Header("Configuração do Menu")]
     public GameObject painelDoMenu; // Arrasta o teu Canvas para aqui
     public InputActionReference botaoDeMenu; // Vamos definir qual é o botão no Unity
-    public GameObject checklist;
 
     void OnEnable()
     {
@@ -31,6 +30,7 @@ public class MenuNoComando : MonoBehaviour
     // Esta função será chamada pelo botão "Finalizar Simulação" que criaste na UI
     public void FinalizarSimulacao()
     {
+        Debug.Log("Simulação finalizada pelo usuário.");
         // Verify checklist to set final score
         ComputeChecklistScore();
         // Carrega a scene de resultados 
@@ -42,33 +42,32 @@ public class MenuNoComando : MonoBehaviour
         // get checklist toggle components with name "ToggleXX" 
         for (int i = 1; i <= 6; i++)
         {
-            GameObject toggleObj = GameObject.Find("Toggle0" + i);
-            Toggle toggle = toggleObj.GetComponent<Toggle>();
+            bool isOn = GameData.Checklist[i];
             switch (i)
             {
                 case 1:
                     bool isSelectedSkinRash = GameData.SelectedSkin == 2 || GameData.SelectedSkin == 3;
-                    GameData.GamePoints["SkinRash"] = toggle.isOn && isSelectedSkinRash ? 5 : 0;
+                    GameData.GamePoints["SkinRash"] = (isOn && isSelectedSkinRash || !isOn && !isSelectedSkinRash) ? GameData.ActionPoints : 0;
                     break;
                 case 2:
                     bool isSelectedSkinAstenose = GameData.SelectedSkin == 4;
-                    GameData.GamePoints["SkinAstenose"] = toggle.isOn && isSelectedSkinAstenose ? 5 : 0;
+                    GameData.GamePoints["SkinAstenose"] = (isOn && isSelectedSkinAstenose || !isOn && !isSelectedSkinAstenose) ? GameData.ActionPoints : 0;
                     break;
                 case 3:
                     bool isHighTemperature = GameData.SelectedTemperature >= 38.0f;
-                    GameData.GamePoints["Temperature"] = toggle.isOn && isHighTemperature ? 5 : 0;
+                    GameData.GamePoints["Temperature"] = (isOn && isHighTemperature || !isOn && !isHighTemperature) ? GameData.ActionPoints : 0;
                     break;
                 case 4:
                     bool isAbnormalPulse = GameData.SelectedAudio > 1;
-                    GameData.GamePoints["Pulse"] = toggle.isOn && isAbnormalPulse ? 5 : 0;
+                    GameData.GamePoints["Pulse"] = (isOn && isAbnormalPulse || !isOn && !isAbnormalPulse) ? GameData.ActionPoints : 0;
                     break;
                 case 5:
                     bool isNotAVFCollapsible = GameData.SelectedBump > 1;
-                    GameData.GamePoints["Elevation"] = toggle.isOn && isNotAVFCollapsible ? 5 : 0;
+                    GameData.GamePoints["Elevation"] = (isOn && isNotAVFCollapsible || !isOn && !isNotAVFCollapsible) ? GameData.ActionPoints : 0;
                     break;
                 case 6:
                     bool isHyperpulsatilePulse = GameData.SelectedAVFPulse > 1;
-                    GameData.GamePoints["Palpation"] = toggle.isOn && isHyperpulsatilePulse ? 5 : 0;
+                    GameData.GamePoints["Palpation"] = (isOn && isHyperpulsatilePulse || !isOn && !isHyperpulsatilePulse) ? GameData.ActionPoints : 0;
                     break;
                 default:
                     break;

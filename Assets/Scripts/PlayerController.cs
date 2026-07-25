@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public void StartControllerFeedback()
     {
         isVibrating = true;
-        GameData.GamePoints["CheckPalpation"] = 5;
+        GameData.GamePoints["CheckPalpation"] = GameData.ActionPoints;
         Debug.Log("Starting Controller Feedback");
         StartCoroutine(ControllerFeedbackCoroutine());        
     }
