@@ -28,15 +28,16 @@ public class PlayerController : MonoBehaviour
         while (isVibrating)
         {
             if (GameData.SelectedAVFPulse == 1)
-                VibrateController(1f, 0.2f);
+                VibrateController(1f, 0.5f);
             else
-                VibrateController(0.1f, 0.2f);
+                VibrateController(1f, 0.5f);
             yield return new WaitForSeconds(1f);
         }
     }
 
     public void StopControllerFeedback()
     {
+        Debug.Log("Stopping Controller Feedback");
         isVibrating = false;
     }
 
@@ -46,6 +47,6 @@ public class PlayerController : MonoBehaviour
         InputDevice deviceRight = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
         deviceLeft.SendHapticImpulse(0, amplitude, duration);
-        deviceLeft.SendHapticImpulse(0, amplitude, duration);
+        deviceRight.SendHapticImpulse(0, amplitude, duration);
     }
 }

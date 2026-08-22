@@ -160,7 +160,7 @@ public class PatientController : MonoBehaviour
         float heightDifference = handHeight - leftHandRestPosition.y;
         if (heightDifference > 0.1f)
         {
-            Debug.Log($"Hand height: {heightDifference}");
+            //Debug.Log($"Hand height: {heightDifference}");
             GameData.GamePoints["CheckElevation"] = GameData.ActionPoints;
 
             if (GameData.SelectedBump == 1)
