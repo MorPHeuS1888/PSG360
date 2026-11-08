@@ -301,8 +301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArmTargetController
   proxyGrab: {fileID: 8270288035081617174}
-  alturaMinima: 0
-  alturaMaxima: 0.4
+  yMinimo: 0
+  yMaximo: 0.5
+  xMinimo: 0
+  xMaximo: 0.5
 --- !u!1 &5201097097836227852
 GameObject:
   m_ObjectHideFlags: 0
